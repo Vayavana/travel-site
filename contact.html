@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Vayavana Travels</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <style>
+    html, body { background: #f2f3f5 !important; }
+    .main-header { position: relative; background: #fff; box-shadow: 0 2px 16px #e3f2fd33; z-index: 100; }
+    .logo-nav { display:flex; align-items:center; justify-content:space-between; width:100%; }
+    .logo { font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;text-decoration:none !important; }
+    .main-nav { display:flex; align-items:center; gap:0.7em; margin-left:auto; }
+    .main-nav a { color:#111 !important; font-weight:600; text-decoration:none; transition:color 0.18s; }
+    .main-nav a.active, .main-nav a:hover { color:#0077c2 !important; }
+    .dropdown { position:relative;display:inline-block; }
+    .dropbtn { font-size:1.3em; padding:0 0.7em; display:flex; align-items:center; gap:0.5em; color:#111 !important; background:none; border:none; cursor:pointer; text-decoration:none !important; }
+    .dropbtn i, .dropbtn span, .dropbtn .fa-caret-down { color:#111 !important; }
+    .dropdown-content { display:none; position:absolute; left:0; top:calc(100% + 8px); background:#fff; border-radius:14px; box-shadow:0 2px 16px #e3f2fd33; padding:0.7rem 1.2rem; z-index:1000; min-width:220px; text-align:left; gap:1.2rem; flex-direction:column; }
+    .dropdown-content a { display:block; margin:0.2em 0; color:#111; font-weight:600; font-size:1.15rem; text-decoration:none; border-radius:6px; padding:0.4em 1em; transition:background 0.15s, color 0.15s; }
+    .dropdown-content a:hover { background:#0077c2; color:#fff; }
+    .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { display:flex; }
+    .contact-section { max-width: 700px; margin: 2.5rem auto 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px #b2e0ff33; padding: 2.5rem 2rem; }
+    .contact-section h2 { font-family:'Montserrat',Arial,sans-serif; font-size:2rem; font-weight:900; color:#222; margin-bottom:1.2rem; }
+    .contact-details { margin-bottom:2rem; }
+    .contact-details div { margin-bottom:0.7rem; font-size:1.13rem; color:#222; }
+    .contact-details i { color:#0077c2; margin-right:0.7em; }
+    .contact-form label { font-weight:600; color:#111; display:block; margin-bottom:0.3em; }
+    .contact-form input, .contact-form textarea { width:100%; padding:0.7em; border-radius:8px; border:1px solid #cbe6fa; margin-bottom:1.1em; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; }
+    .contact-form textarea { min-height: 110px; }
+    .contact-form button { background:#0077c2; color:#fff; font-weight:700; border:none; border-radius:8px; padding:0.7em 2.2em; font-size:1.1rem; cursor:pointer; transition:background 0.18s; }
+    .contact-form button:hover { background:#005fa3; }
+    @media (max-width: 600px) { .contact-section { padding: 1.2rem 0.5rem; } }
+    footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; background:#fff; border-top:1px solid #e3f2fd; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.getElementById('logo-animated');
+      if (logo) {
+        logo.style.position = 'relative';
+        logo.style.overflow = 'hidden';
+        logo.style.transition = 'color 0.18s';
+        logo.addEventListener('mousemove', function(e) {
+          var rect = logo.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var percent = x / rect.width;
+          var color = 'rgb(' + Math.round(75 + 100 * percent) + ',' + Math.round(179 + 50 * percent) + ',' + Math.round(253 - 100 * percent) + ')';
+          logo.style.textShadow = '0 0 18px ' + color + ', 0 0 32px #fff8';
+        });
+        logo.addEventListener('mouseleave', function() {
+          logo.style.textShadow = '';
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-nav">
+      <a href="index.html" class="logo" id="logo-animated">VAYAVANA</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="#" id="destinations-icon" class="dropbtn" title="Destinations" tabindex="0">
+            <i class="fa-solid fa-map-location-dot" style="color:#111;"></i>
+            <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em; color:#111;">Destinations</span>
+            <i class="fa fa-caret-down" style="margin-left:0.4em;font-size:0.9em;color:#111;"></i>
+          </a>
+          <div class="dropdown-content" id="destinations-menu">
+            <a class="chip" href="destinations/domestic/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">Domestic</a>
+            <a class="chip" href="destinations/international/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">International</a>
+          </div>
+        </div>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="contact-section">
+      <h2>Contact Us</h2>
+      <div class="contact-details">
+        <div><i class="fa fa-phone"></i> <b>Phone:</b> <a href="tel:+919502763187">+91 9502763187</a></div>
+        <div><i class="fa fa-envelope"></i> <b>Email:</b> <a href="mailto:opsvayavana@gmail.com">opsvayavana@gmail.com</a></div>
+        <div><i class="fab fa-whatsapp"></i> <b>WhatsApp:</b> <a href="https://wa.me/919502763187">Chat on WhatsApp</a></div>
+      </div>
+      <form class="contact-form" autocomplete="off">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div style="text-align:left;">
+      <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600; font-family:'Montserrat',Arial,sans-serif;">Terms &amp; Conditions</a>
+    </div>
+    <div style="text-align:right;">
+      &copy; 2025 Vayavana Travels. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vayavana Travels - Itineraries Catalog</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="script.js"></script>
+  <style>
+    html, body {
+      background: #f2f3f5 !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-nav">
+      <a href="index.html" class="logo">Vayavana</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tours.html">Tours</a>
+        <div class="dropdown">
+          <button class="dropbtn">Destinations <i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-content chips-dropdown">
+            <div class="chip-group">
+              <span class="chip-label">Domestic</span>
+              <a class="chip" href="#kerala">Kerala</a>
+              <a class="chip" href="#ooty">Ooty</a>
+              <a class="chip" href="#kashmir">Kashmir</a>
+            </div>
+            <div class="chip-group">
+              <span class="chip-label">International</span>
+              <a class="chip" href="#bali">Bali</a>
+              <a class="chip" href="#thailand">Thailand</a>
+              <a class="chip" href="#vietnam">Vietnam</a>
+            </div>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="itinerary-catalog visible">
+      <h2>Ready-Made Itineraries</h2>
+      <div class="itinerary-list">
+        <div class="itinerary-card">
+          <img src="images/kerala.jpg" alt="Kerala Explorer" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+          <h3>Kerala Explorer</h3>
+          <p>6 Days / 5 Nights</p>
+          <ul>
+            <li>Cochin – Munnar – Thekkady – Alleppey</li>
+            <li>Backwater cruise, tea gardens, wildlife safari</li>
+          </ul>
+          <span style="font-weight:600;">From ₹18,999</span>
+          <a href="#" class="cta" style="margin-top:1rem;">View Details</a>
+        </div>
+        <div class="itinerary-card">
+          <img src="images/bali.jpg" alt="Bali Bliss" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+          <h3>Bali Bliss</h3>
+          <p>5 Days / 4 Nights</p>
+          <ul>
+            <li>Ubud – Kuta – Seminyak</li>
+            <li>Rice terraces, beaches, temples</li>
+          </ul>
+          <span style="font-weight:600;">From ₹29,999</span>
+          <a href="#" class="cta" style="margin-top:1rem;">View Details</a>
+        </div>
+        <!-- Add more itinerary-card blocks as needed -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Vayavana Travels. All rights reserved.</p>
+  </footer>
+</body>
+</html>

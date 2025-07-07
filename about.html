@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - VAYAVANA</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="script.js"></script>
+  <style>
+    html, body {
+      background: #f2f3f5 !important;
+    }
+    /* --- Dropdown hover fix for Destinations --- */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropbtn {
+      background: none;
+      border: none;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+      padding: 0.5rem 1.2rem;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+      padding: 0.7rem 1.2rem;
+      z-index: 1000;
+      min-width: 220px;
+      text-align: left;
+      gap: 1.2rem;
+      flex-direction: column;
+    }
+    .dropdown-content a {
+      display: block;
+      margin: 0.2em 0;
+      color: #111;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 0.4em 1em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-content a:hover {
+      background: #0077c2;
+      color: #fff;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content,
+    .dropbtn:focus + .dropdown-content {
+      display: flex;
+    }
+    .team-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .team-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+      text-align: center;
+      width: 180px;
+      min-width: 140px;
+      max-width: 200px;
+      margin: 0;
+    }
+    .about-values {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+    .values-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.2rem 2.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0 0;
+    }
+    .values-list li {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 1.2rem 2.2rem 1.1rem 2.2rem;
+      min-width: 220px;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.13rem;
+      font-weight: 500;
+      color: #222;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .values-list li:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.16);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .values-list i {
+      font-size: 2.1rem;
+      color: #0a6cf1;
+      margin-bottom: 0.7rem;
+    }
+    .logo {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 2.1rem;
+      letter-spacing: 0.18em;
+      color: #111;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+      padding: 0.2em 0.7em 0.2em 0.7em;
+      border-radius: 12px;
+      transition: color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 12px rgba(10,10,10,0.08);
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.12) 40%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.18s;
+      z-index: 2;
+    }
+    .logo.lit::after {
+      opacity: 1;
+      transition: opacity 0.08s;
+    }
+    .logo:hover {
+      color: #0a6cf1;
+      box-shadow: 0 4px 24px rgba(10,108,241,0.18);
+      text-shadow: 0 2px 8px rgba(10,108,241,0.10);
+    }
+    #destinations-icon:hover + .destinations-menu,
+    .destinations-menu:hover {
+      display: flex;
+    }
+  </style>
+  <script>
+    // Logo lighting effect on mouse move
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.querySelector('.logo');
+      if (logo) {
+        logo.addEventListener('mousemove', function(e) {
+          var rect = logo.getBoundingClientRect();
+          var x = ((e.clientX - rect.left) / rect.width) * 100;
+          var y = ((e.clientY - rect.top) / rect.height) * 100;
+          logo.style.setProperty('--x', x + '%');
+          logo.style.setProperty('--y', y + '%');
+          logo.classList.add('lit');
+        });
+        logo.addEventListener('mouseleave', function() {
+          logo.classList.remove('lit');
+        });
+      }
+    });
+    // Logo lighting animation (from About page)
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.getElementById('logo-animated');
+      if (logo) {
+        logo.style.position = 'relative';
+        logo.style.overflow = 'hidden';
+        logo.style.transition = 'color 0.18s';
+        logo.addEventListener('mousemove', function(e) {
+          var rect = logo.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var percent = x / rect.width;
+          var color = 'rgb(' + Math.round(75 + 100 * percent) + ',' + Math.round(179 + 50 * percent) + ',' + Math.round(253 - 100 * percent) + ')';
+          logo.style.textShadow = '0 0 18px ' + color + ', 0 0 32px #fff8';
+        });
+        logo.addEventListener('mouseleave', function() {
+          logo.style.textShadow = '';
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-nav" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+      <a href="index.html" class="logo" id="logo-animated" style="font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;text-decoration:none !important;">VAYAVANA</a>
+      <nav class="main-nav" style="display:flex; align-items:center; gap:0.7em; margin-left:auto;">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown" style="position:relative;display:inline-block;">
+          <a href="#" id="destinations-icon" class="dropbtn" title="Destinations" tabindex="0" style="font-size:1.3em; padding:0 0.7em; display:flex; align-items:center; gap:0.5em; color:#111 !important; background:none; border:none; cursor:pointer; text-decoration:none !important;">
+            <i class="fa-solid fa-map-location-dot" style="color:#111;"></i>
+            <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em; color:#111;">Destinations</span>
+            <i class="fa fa-caret-down" style="margin-left:0.4em;font-size:0.9em;color:#111;"></i>
+          </a>
+          <div class="dropdown-content" id="destinations-menu" style="min-width:320px;">
+            <a class="chip" href="destinations/domestic/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">Domestic</a>
+            <a class="chip" href="destinations/international/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">International</a>
+          </div>
+        </div>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-team animate-slide-in visible">
+      <h2>About Vayavana</h2>
+      <p>We are passionate travelers helping others discover the beauty of the world. Our mission is to create unforgettable journeys and lifelong memories for every traveler.</p>
+    </section>
+    <section class="about-values animate-fade-in visible">
+      <h3>Our Values</h3>
+      <ul class="values-list">
+        <li><i class="fa fa-globe"></i> Authentic Experiences</li>
+        <li><i class="fa fa-heart"></i> Customer First</li>
+        <li><i class="fa fa-leaf"></i> Sustainable Travel</li>
+        <li><i class="fa fa-users"></i> Community Driven</li>
+      </ul>
+    </section>
+    <section class="about-section visible">
+      <h2>About Us</h2>
+      <p>At Vayavana Travels, we believe in redefining how the world explores. With a curated portfolio of unforgettable experiences—whether hidden Indian gems or exotic overseas getaways—we’re not just about destinations, but about crafting moments that linger. Our dedicated travel experts bring personalization, comfort, and affordability into every package.</p>
+    </section>
+  </main>
+
+  <footer style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; background:#fff; border-top:1px solid #e3f2fd;">
+      <div style="text-align:left;">
+        <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600; font-family:'Montserrat',Arial,sans-serif;">Terms &amp; Conditions</a>
+      </div>
+      <div style="text-align:right;">
+        &copy; 2025 Vayavana Travels. All rights reserved.
+      </div>
+    </footer>
+</body>
+</html>
