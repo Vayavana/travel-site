@@ -6,177 +6,73 @@
   <title>Vayavana Blogs</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-    }
+    body { margin:0; font-family:sans-serif; background:#f4f6f8; }
 
-    /* HEADER */
-    header {
-      background: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    header { background:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 10px rgba(0,0,0,0.06); position:sticky; top:0; z-index:100; }
+    .logo { font-size:1.8rem; font-weight:900; text-decoration:none; color:#111; }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-decoration: none;
-      color: #111;
-      letter-spacing: 0.08em;
-    }
+    nav { display:flex; gap:1rem; align-items:center; }
+    nav a { text-decoration:none; color:#111; font-weight:600; padding:0.4rem 0.8rem; border-radius:6px; transition:0.2s; }
+    nav a:hover, nav a.active { background:#0077c2; color:#fff; }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-weight: 600;
-      padding: 0.4rem 0.9rem;
-      border-radius: 6px;
-      transition: 0.2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      background-color: #0077c2;
-      color: #fff;
-    }
-
-    /* DROPDOWN */
-    .dropdown {
-      position: relative;
-    }
-
-    .dropbtn {
-      background: none;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      color: #111;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+    .dropdown { position:relative; }
+    .dropbtn { background:none; border:none; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.4rem; color:#111; padding:0.4rem 0.8rem; border-radius:6px; transition:0.2s; }
+    .dropbtn:hover { background:#eee; }
 
     .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-      border-radius: 8px;
-      overflow: hidden;
-      z-index: 999;
-      min-width: 180px;
-      flex-direction: column;
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      background:#fff;
+      box-shadow:0 2px 12px rgba(0,0,0,0.15);
+      border-radius:8px;
+      flex-direction:column;
+      overflow:hidden;
+      min-width:180px;
+      z-index:1000;
     }
-
     .dropdown-content a {
-      padding: 0.8rem 1rem;
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
+      padding:0.7rem 1rem;
+      text-decoration:none;
+      color:#111;
+      font-weight:500;
+      transition:0.2s;
     }
+    .dropdown-content a:hover { background:#0077c2; color:#fff; }
+    .dropdown:hover .dropdown-content { display:flex; }
 
-    .dropdown-content a:hover {
-      background-color: #0077c2;
-      color: white;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: flex;
-    }
-
-    /* HERO SECTION */
     .blogs-hero {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      background: linear-gradient(90deg, #e3f2fd, #f4f6f8);
-      border-radius: 0 0 32px 32px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      text-align:center; padding:3rem 1rem 2rem;
+      background:linear-gradient(90deg,#e3f2fd,#f4f6f8);
+      border-radius:0 0 32px 32px;
+      box-shadow:0 2px 12px rgba(0,0,0,0.05);
     }
+    .blogs-hero h1 { font-size:2.5rem; color:#0077c2; margin-bottom:1rem; }
+    .blogs-hero p { max-width:600px; margin:0 auto; font-size:1.1rem; color:#444; }
 
-    .blogs-hero h1 {
-      font-size: 2.5rem;
-      color: #0077c2;
-      margin-bottom: 1rem;
-    }
-
-    .blogs-hero p {
-      max-width: 600px;
-      margin: 0 auto;
-      color: #444;
-      font-size: 1.1rem;
-    }
-
-    /* BLOG GRID */
     .blogs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem; padding:2rem; max-width:1200px; margin:0 auto;
     }
-
     .blog-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      overflow: hidden;
-      transition: 0.3s;
+      background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.06);
+      overflow:hidden; transition:transform 0.3s;
     }
+    .blog-card:hover { transform:translateY(-5px); }
+    .blog-card img { width:100%; height:200px; object-fit:cover; display:block; }
+    .blog-card h2 { font-size:1.3rem; color:#0077c2; margin:1rem; }
+    .blog-card p { margin:0 1rem 1rem; color:#333; }
 
-    .blog-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .blog-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .blog-card h2 {
-      font-size: 1.3rem;
-      color: #0077c2;
-      padding: 1rem;
-      margin: 0;
-    }
-
-    .blog-card p {
-      padding: 0 1rem 1rem;
-      color: #333;
-    }
-
-    /* FOOTER */
     footer {
-      background: #fff;
-      text-align: center;
-      padding: 1rem;
-      color: #666;
-      font-size: 0.9rem;
-      border-top: 1px solid #e3e3e3;
-      margin-top: 2rem;
+      background:#fff; text-align:center; padding:1rem; font-size:0.9rem;
+      color:#666; border-top:1px solid #e3e3e3; margin-top:2rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <a href="index.html" class="logo">VAYAVANA</a>
     <nav>
@@ -196,40 +92,35 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="blogs-hero">
     <h1>Travel Inspiration & Stories</h1>
     <p>Explore our latest travel blogs, tips, and destination guides. Get inspired for your next adventure with Vayavana!</p>
   </section>
 
-  <!-- BLOG GRID -->
   <section class="blogs-grid">
     <div class="blog-card">
       <img src="images/2.jpg" alt="Bali">
       <h2>5 Must-See Places in Bali</h2>
-      <p>Discover the best beaches, temples, and hidden gems in Bali.</p>
+      <p>Discover the best beaches, temples, and hidden gems.</p>
     </div>
     <div class="blog-card">
       <img src="images/3.jpg" alt="Family Trip">
       <h2>Hassle-Free Family Trip</h2>
-      <p>Top tips for stress-free travel with kids, from packing to fun.</p>
+      <p>Top tips for stress‑free travel with kids.</p>
     </div>
     <div class="blog-card">
       <img src="images/4.jpg" alt="Vietnam">
       <h2>Visit Vietnam in 2025</h2>
-      <p>Culture, food, and breathtaking landscapes you can't miss.</p>
+      <p>Explore Vietnam’s culture, food, and landscapes.</p>
     </div>
     <div class="blog-card">
       <img src="images/5.jpg" alt="Kerala">
       <h2>Kerala Backwaters</h2>
-      <p>All you need for a magical houseboat journey through Kerala.</p>
+      <p>Magical houseboat experiences in Kerala.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2025 Vayavana Travels. All rights reserved.
-  </footer>
+  <footer>&copy; 2025 Vayavana Travels. All rights reserved.</footer>
 
 </body>
 </html>
