@@ -1,39 +1,49 @@
-// Import the Express library
-const express = require('express');
+const express = require("express");
+const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
-// Create an Express app
+dotenv.config();
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Set the port
-const port = 3000;
-
-// Middleware to parse JSON data in requests
+// Middleware
+app.use(cors());
 app.use(express.json());
 
-// Allow requests from the browser (CORS headers)
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
+// Contact form endpoint
+app.post('/contact', async (req, res) => {
+  const { name, email, message } = req.body;
+  console.log('Received contact form submission:', req.body);
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Name, email, and message are required' });
+  }
+
+  try {
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    let mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER, // Always send to opsvayavana@gmail.com
+      subject: `New Contact Form Submission from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.json({ success: true, message: 'Message sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send message' });
+  }
 });
 
-// In-memory storage for itineraries
-let itineraries = [];
-
-// POST endpoint to receive new itineraries
-app.post('/api/itineraries', (req, res) => {
-  const itinerary = req.body;
-  itineraries.push(itinerary);
-  console.log('Itinerary received:', itinerary);
-  res.status(201).send({ message: 'Itinerary saved!' });
-});
-
-// GET endpoint to return all itineraries
-app.get('/api/itineraries', (req, res) => {
-  res.send(itineraries);
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`✅ Server is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

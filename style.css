@@ -1,16 +1,13 @@
 /* --- GLOBAL MODERN STYLES & ANIMATIONS --- */
-:root {
-  --primary: #111;
-  --accent: #fff;
-  --bg: #fff;
-  --text: #111;
-  --radius: 16px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.10);
-  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+footer {
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: 0.97rem;
+  color: #222;
+  background: #fff;
+  border-top: 1px solid #e3f2fd;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
-html {
-  scroll-behavior: smooth;
-  background: #f2f3f5 !important;
 }
 body {
   font-family: 'Segoe UI', Arial, sans-serif;

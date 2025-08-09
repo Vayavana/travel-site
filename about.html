@@ -11,6 +11,12 @@
     html, body {
       background: #f2f3f5 !important;
     }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
     /* --- Dropdown hover fix for Destinations --- */
     .dropdown {
       position: relative;
@@ -162,6 +168,71 @@
     #destinations-icon:hover + .destinations-menu,
     .destinations-menu:hover {
       display: flex;
+    }
+  </style>
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .about-hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .about-hero h1 {
+        font-size: 1.5rem;
+      }
+      .about-hero p {
+        font-size: 1rem;
+      }
+      .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .about-img {
+        height: 140px !important;
+      }
+      .about-content h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .about-content p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
     }
   </style>
   <script>

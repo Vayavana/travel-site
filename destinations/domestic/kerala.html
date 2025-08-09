@@ -8,33 +8,251 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script defer src="../../script.js"></script>
   <style>
-    html, body { background: #f2f3f5 !important; }
-    /* ...existing code for dropdown, logo, menu, chip styles from contact.html... */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #f4f6f8 100%);
+      min-height: 100vh;
+    }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid, .destination-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .main-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: rgba(0,0,0,0.08);
+      box-shadow: none;
+      z-index: 100;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      transition: background 0.3s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .logo {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff !important;
+      text-decoration: none;
+      background: none !important;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      transition: none;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+    }
+    .main-nav a.active, .main-nav a:hover, .logo:hover {
+      color: #4bb3fd !important;
+    }
     .dropdown { position: relative; display: inline-block; }
-    .dropbtn { background: none; border: none; color: #fff; font: inherit; cursor: pointer; padding: 0.5rem 1.2rem; outline: none; display: flex; align-items: center; gap: 0.5em; text-shadow: 0 1px 8px rgba(0,0,0,0.18); }
-    .dropdown-content { display: none; position: absolute; left: 0; top: calc(100% + 8px); background: #fff; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.13); padding: 0.7rem 1.2rem; z-index: 1000; min-width: 220px; text-align: left; gap: 1.2rem; flex-direction: column; }
-    .dropdown-content a { display: block; margin: 0.2em 0; color: #111; font-weight: 600; font-size: 1.15rem; text-decoration: none; border-radius: 6px; padding: 0.4em 1em; transition: background 0.15s, color 0.15s; }
-    .dropdown-content a:hover { background: #0077c2; color: #fff; }
-    .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content, .dropbtn:focus + .dropdown-content { display: flex; }
-    .dropbtn:focus { outline: none; }
-    .dropdown-content { background: #fff; color: #222; }
-    .logo { font-family: 'Montserrat', Arial, sans-serif !important; font-weight: 900 !important; font-size: 2.2rem !important; letter-spacing: 0.18em !important; color: #2196f3 !important; text-transform: uppercase !important; background: linear-gradient(90deg, #0077ff 20%, #4bb3fd 60%, #b2e0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; box-shadow: 0 4px 32px #e3f2fd44, 0 1px 8px #fff8; border-radius: 18px; padding: 0.2em 1.2em; display: inline-block; transition: background 0.3s, color 0.18s, text-shadow 0.18s; }
-    .logo:hover { color: #0077ff !important; background: linear-gradient(90deg, #2196f3 10%, #4bb3fd 60%, #b2e0ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; box-shadow: 0 0 24px #4bb3fd88, 0 0 32px #fff8; }
-    @media (max-width: 700px) { .logo { font-size: 1.3rem !important; letter-spacing: 0.12em !important; padding: 0.1em 0.5em; } }
-    .destinations-menu { display: none; position: absolute; top: 60px; right: 0; left: auto; background: #fff; border-radius: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.13); padding: 1.2rem 2.5rem; z-index: 1000; min-width: 320px; text-align: left; display: flex; gap: 2.5rem; justify-content: flex-start; align-items: center; }
-    .destinations-menu.active { display: flex; }
-    .destinations-menu a { display: inline-block; margin: 0 0.7em; color: #222; font-weight: 600; font-size: 1.25rem; text-decoration: none; border-radius: 6px; padding: 0.5em 1.2em; transition: background 0.15s, color 0.15s; }
-    .destinations-menu a:hover { background: #0077c2; color: #fff; }
-    #destinations-icon:hover + .destinations-menu, .destinations-menu:hover { display: flex; }
-    .chip-group { display: flex; flex-wrap: wrap; gap: 0.5em; margin-bottom: 0.5em; }
-    .chip { display: inline-block; background: #e6f0fa; color: #0077c2 !important; font-weight: 600; border-radius: 18px; padding: 0.35em 1.1em; font-size: 1rem; text-decoration: none; transition: background 0.15s, color 0.15s; border: none; margin-bottom: 0.2em; }
-    .chip:hover, .chip:focus { background: #0077c2; color: #fff !important; }
+    .dropbtn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .dropbtn:focus, .dropbtn:hover {
+      background: #eee;
+      outline: none;
+    }
+    .dropbtn i, .dropbtn span, .dropbtn .fa-caret-down {
+      color: #111 !important;
+      background: none !important;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .dropbtn i:hover, .dropbtn span:hover, .dropbtn .fa-caret-down:hover,
+    .dropbtn i:focus, .dropbtn span:focus, .dropbtn .fa-caret-down:focus {
+      background: #eee !important;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+      padding: 0.7rem 1.2rem;
+      z-index: 1000;
+      min-width: 220px;
+      text-align: left;
+      gap: 1.2rem;
+      flex-direction: column;
+      color: #111 !important;
+    }
+    .dropdown-content a {
+      display: block;
+      margin: 0.2em 0;
+      color: #111;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 0.4em 1em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-content a:hover {
+      background: #0077c2;
+      color: #fff;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dropdown-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .dropbtn:focus {
+      outline: none;
+    }
+    .logo-nav, .main-nav a, .logo {
+      color: #fff !important;
+    }
+    .main-nav a.active, .main-nav a:hover, .logo:hover {
+      color: #4bb3fd !important;
+    }
+    .content-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #e3f2fd44, 0 1px 8px #fff8;
+      padding: 2.5em 2em;
+      margin: 2em auto;
+      max-width: 900px;
+    }
+    .hero-section {
+      background: linear-gradient(120deg, #e3f2fd 0%, #f8fafc 100%);
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 2px 32px #b2e0ff33;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-section > div {
+      background: rgba(255,255,255,0.92);
+      padding: 2.5em 2.5em;
+      border-radius: 22px;
+      max-width: 600px;
+      margin: 2em;
+      box-shadow: 0 2px 12px #e3f2fd44;
+    }
+    @media (max-width: 700px) {
+      .logo { font-size: 1.3rem !important; letter-spacing: 0.12em !important; padding: 0.1em 0.5em; }
+      .content-card { padding: 1.2em 0.5em; }
+      .hero-section > div { padding: 1.2em 0.5em; }
+    }
+    html { zoom: 1 !important; }
+    body { zoom: 1 !important; }
+  </style>
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .destination-hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .destination-hero h1 {
+        font-size: 1.5rem;
+      }
+      .destination-hero p {
+        font-size: 1rem;
+      }
+      .destination-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .destination-img {
+        height: 140px !important;
+      }
+      .destination-content h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .destination-content p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="main-header">
     <div class="logo-nav" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
-      <a href="../../index.html" class="logo" id="logo-animated" style="font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;">VAYAVANA</a>
+      <a href="../../index.html" class="logo">VAYAVANA</a>
       <nav class="main-nav" style="display:flex; align-items:center; gap:0.7em; margin-left:auto;">
         <a href="../../index.html">Home</a>
         <a href="../../about.html">About</a>

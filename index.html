@@ -9,67 +9,217 @@
   <script defer src="script.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      background: #f2f3f5 !important;
+    body { margin:0; font-family:sans-serif; background:#f4f6f8; }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .destinations-menu {
-      display: none;
-      position: absolute;
-      left: 0;
-      right: auto;
-      top: calc(100% + 8px);
+
+    header { background:#fff; padding:1rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.06); position:sticky; top:0; z-index:100; }
+    .main-header .logo-nav { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; width:100%; padding:0 2rem; }
+    .logo {
+      font-size:1.8rem;
+      font-weight:900;
+      text-decoration:none;
+      color:#111;
+      font-family:'Montserrat',Arial,sans-serif;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      background:none !important;
+      box-shadow:none;
+      border-radius:0;
+      padding:0;
+      transition:none;
+      display:block;
+      text-align:left;
+    }
+
+    nav { display:flex; gap:1rem; align-items:center; justify-content:flex-end; }
+    nav a { text-decoration:none; color:#111; font-weight:600; padding:0.4rem 0.8rem; border-radius:6px; transition:0.2s; }
+    nav a:hover, nav a.active { background:#0077c2; color:#fff; }
+
+    .dropdown { position:relative; }
+    .main-header {
       background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(255, 252, 252, 0.959)38, 0.13), 0.13);
-      padding: 0.7rem 1.2rem;
-      z-index: 1000;
-      min-width: 220px;
-      text-align: left;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.7rem 2vw 0.7rem 2vw;
+      width: 100%;
+    }
+    .logo-nav {
       display: flex;
-      gap: 1.2rem;
-      justify-content: flex-start;
       align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
-    .destinations-menu.active {
-      display: flex;
-    }
-    .destinations-menu a {
-      display: inline-block;
-      margin: 0 0.3em;
-      color: #fff;
-      font-weight: 600;
-      font-size: 1.15rem;
+    .logo {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #111;
       text-decoration: none;
-      border-radius: 6px;
-      padding: 0.4em 1em;
-      transition: background 0.15s, color 0.15s;
+      background: none !important;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      transition: none;
     }
-    .destinations-menu a:hover {
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .main-nav a.active, .main-nav a:hover {
       background: #0077c2;
       color: #fff;
     }
-    #destinations-icon:hover + .destinations-menu,
-    .destinations-menu:hover {
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
       display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #111;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .dropbtn:focus, .dropbtn:hover {
+      background: #eee;
+      outline: none;
+    }
+    .dropbtn i, .dropbtn span, .dropbtn .fa-caret-down {
+      color: #111 !important;
+      background: none !important;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .dropbtn i:hover, .dropbtn span:hover, .dropbtn .fa-caret-down:hover,
+    .dropbtn i:focus, .dropbtn span:focus, .dropbtn .fa-caret-down:focus {
+      background: #eee !important;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 180px;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .dropdown-content a:hover { background: #0077c2; color: #fff; }
+    .dropdown:hover .dropdown-content { display: flex; }
+  </style>
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .main-content, .tours-grid, .about-content, .contact-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .tour-card img, .about-img, .contact-img {
+        height: 140px !important;
+      }
+      .tour-card h2, .about-content h2, .contact-content h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .tour-card p, .about-content p, .contact-content p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
     }
   </style>
-</head>
-<body>
+
+  </head>
+  <body>
   <header class="main-header">
-    <div class="logo-nav" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
-      <a href="index.html" class="logo" id="logo-animated" style="font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;text-decoration:none !important;">VAYAVANA</a>
-      <nav class="main-nav" style="display:flex; align-items:center; gap:0.7em; margin-left:auto;">
+    <div class="logo-nav">
+      <a href="index.html" class="logo">VAYAVANA</a>
+      <nav class="main-nav">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
-        <div class="dropdown" style="position:relative;display:inline-block;">
-          <a href="#" id="destinations-icon" class="dropbtn" title="Destinations" tabindex="0" style="font-size:1.3em; padding:0 0.7em; display:flex; align-items:center; gap:0.5em; color:#fff !important; background:none; border:none; cursor:pointer; text-decoration:none !important;">
-            <i class="fa-solid fa-map-location-dot" style="color:#fff;"></i>
-            <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em; color:#fff;">Destinations</span>
-            <i class="fa fa-caret-down" style="margin-left:0.4em;font-size:0.9em;color:#fff;"></i>
-          </a>
-          <div class="dropdown-content" id="destinations-menu" style="min-width:320px;">
-            <a class="chip" href="destinations/domestic/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">Domestic</a>
-            <a class="chip" href="destinations/international/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">International</a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <i class="fa-solid fa-map-location-dot"></i> Destinations <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="destinations/domestic/index.html">Domestic</a>
+            <a href="destinations/international/index.html">International</a>
           </div>
         </div>
         <a href="blogs.html">Blogs</a>
@@ -137,6 +287,16 @@
             <li>Ubud rice terraces</li>
             <li>Beach time in Kuta</li>
             <li>Water temple tour</li>
+          </ul>
+          <a href="#bali-itinerary" class="cta">View Itinerary</a>
+        </div>
+        <div class="package-card">
+          <h3 id="Singapore">Singapore</h3>
+          <p>5 Days / 4 Nights: Singapore</p>
+          <ul>
+            <li>City Tour</li>
+            <li>MBBS + Flowerdome</li>
+            <li>Sentosa Island</li>
           </ul>
           <a href="#bali-itinerary" class="cta">View Itinerary</a>
         </div>
@@ -301,14 +461,22 @@
         </div>
       </div>
     </section>
+
+    <section class="send-email-section visible">
+      <h2>Send Email</h2>
+      <form id="emailForm">
+        <label>Email to:</label><br>
+        <input type="email" id="email" required><br><br>
+        <label>Message:</label><br>
+        <textarea id="message" required></textarea><br><br>
+        <button type="submit">Send Email</button>
+      </form>
+    </section>
   </main>
 
-  <footer style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; background:#fff; border-top:1px solid #e3f2fd;">
-    <div style="text-align:left;">
-      <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600; font-family:'Montserrat',Arial,sans-serif;">Terms &amp; Conditions</a>
-    </div>
-    <div style="text-align:right;">
-      &copy; 2025 Vayavana Travels. All rights reserved.
+  <footer style="padding:0.5rem 0; text-align:center; font-size:0.97rem; color:#222; background:#fff; border-top:1px solid #e3f2fd; font-family:'Montserrat',Arial,sans-serif; width:100%;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600;">Terms</a> &nbsp;|&nbsp; &copy; 2025 Vayavana Travels
     </div>
   </footer>
   <script>
@@ -367,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-// Destinations dropdown: CSS hover for desktop
+// No logo animation JS
   </script>
   <style>
 /* --- Dropdown hover fix for Destinations --- */
@@ -616,27 +784,7 @@ body {
   zoom: 1 !important;
 }
   </style>
-  <script>
-    // Logo lighting animation (from About page)
-    document.addEventListener('DOMContentLoaded', function() {
-      var logo = document.getElementById('logo-animated');
-      if (logo) {
-        logo.style.position = 'relative';
-        logo.style.overflow = 'hidden';
-        logo.style.transition = 'color 0.18s';
-        logo.addEventListener('mousemove', function(e) {
-          var rect = logo.getBoundingClientRect();
-          var x = e.clientX - rect.left;
-          var percent = x / rect.width;
-          var color = 'rgb(' + Math.round(75 + 100 * percent) + ',' + Math.round(179 + 50 * percent) + ',' + Math.round(253 - 100 * percent) + ')';
-          logo.style.textShadow = '0 0 18px ' + color + ', 0 0 32px #fff8';
-        });
-        logo.addEventListener('mouseleave', function() {
-          logo.style.textShadow = '';
-        });
-      }
-    });
-  </script>
+  <!-- Logo animation script removed: logo is now always static -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var destIcon = document.getElementById('destinations-icon');
@@ -658,6 +806,33 @@ body {
         });
       }
     });
+  </script>
+  <script>
+const form = document.getElementById('emailForm');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  fetch('http://localhost:5000/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, message })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Email sent successfully!');
+    } else {
+      alert('Failed to send email: ' + data.error);
+    }
+  })
+  .catch(error => {
+    alert('Error: ' + error.message);
+  });
+});
   </script>
 </body>
 </html>
