@@ -1,0 +1,24 @@
+{
+  "name": "travel-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "deploy": "gh-pages -d ."
+  },
+  "homepage": "https://udayk.github.io/Travel-site",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "express": "*",
+    "multer": "*",
+    "nodemailer": "*"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

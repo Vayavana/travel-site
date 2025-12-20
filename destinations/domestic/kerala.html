@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerala - VAYAVANA</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="../../script.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #f4f6f8 100%);
+      min-height: 100vh;
+    }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid, .destination-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .main-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: rgba(0,0,0,0.08);
+      box-shadow: none;
+      z-index: 100;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      transition: background 0.3s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .logo {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff !important;
+      text-decoration: none;
+      background: none !important;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      transition: none;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+    }
+    .main-nav a.active, .main-nav a:hover, .logo:hover {
+      color: #4bb3fd !important;
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .dropbtn:focus, .dropbtn:hover {
+      background: #eee;
+      outline: none;
+    }
+    .dropbtn i, .dropbtn span, .dropbtn .fa-caret-down {
+      color: #111 !important;
+      background: none !important;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .dropbtn i:hover, .dropbtn span:hover, .dropbtn .fa-caret-down:hover,
+    .dropbtn i:focus, .dropbtn span:focus, .dropbtn .fa-caret-down:focus {
+      background: #eee !important;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+      padding: 0.7rem 1.2rem;
+      z-index: 1000;
+      min-width: 220px;
+      text-align: left;
+      gap: 1.2rem;
+      flex-direction: column;
+      color: #111 !important;
+    }
+    .dropdown-content a {
+      display: block;
+      margin: 0.2em 0;
+      color: #111;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 0.4em 1em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .dropdown-content a:hover {
+      background: #0077c2;
+      color: #fff;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dropdown-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .dropbtn:focus {
+      outline: none;
+    }
+    .logo-nav, .main-nav a, .logo {
+      color: #fff !important;
+    }
+    .main-nav a.active, .main-nav a:hover, .logo:hover {
+      color: #4bb3fd !important;
+    }
+    .content-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #e3f2fd44, 0 1px 8px #fff8;
+      padding: 2.5em 2em;
+      margin: 2em auto;
+      max-width: 900px;
+    }
+    .hero-section {
+      background: linear-gradient(120deg, #e3f2fd 0%, #f8fafc 100%);
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 2px 32px #b2e0ff33;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-section > div {
+      background: rgba(255,255,255,0.92);
+      padding: 2.5em 2.5em;
+      border-radius: 22px;
+      max-width: 600px;
+      margin: 2em;
+      box-shadow: 0 2px 12px #e3f2fd44;
+    }
+    @media (max-width: 700px) {
+      .logo { font-size: 1.3rem !important; letter-spacing: 0.12em !important; padding: 0.1em 0.5em; }
+      .content-card { padding: 1.2em 0.5em; }
+      .hero-section > div { padding: 1.2em 0.5em; }
+    }
+    html { zoom: 1 !important; }
+    body { zoom: 1 !important; }
+  </style>
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .destination-hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .destination-hero h1 {
+        font-size: 1.5rem;
+      }
+      .destination-hero p {
+        font-size: 1rem;
+      }
+      .destination-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .destination-img {
+        height: 140px !important;
+      }
+      .destination-content h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .destination-content p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo-nav" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+      <a href="../../index.html" class="logo">VAYAVANA</a>
+      <nav class="main-nav" style="display:flex; align-items:center; gap:0.7em; margin-left:auto;">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <div class="dropdown" style="position:relative;display:inline-block;">
+          <a href="#" id="destinations-icon" class="dropbtn" title="Destinations" tabindex="0" style="font-size:1.3em; padding:0 0.7em; display:flex; align-items:center; gap:0.5em; color:#111 !important; background:none; border:none; cursor:pointer; text-decoration:none !important;">
+            <i class="fa-solid fa-map-location-dot" style="color:#111;"></i>
+            <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em; color:#111;">Destinations</span>
+            <i class="fa fa-caret-down" style="margin-left:0.4em;font-size:0.9em;color:#111;"></i>
+          </a>
+          <div class="dropdown-content" id="destinations-menu" style="min-width:320px;">
+            <a class="chip" href="../domestic/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">Domestic</a>
+            <a class="chip" href="../international/index.html" style="margin-bottom:0.5em; font-weight:700; color:#111 !important; background:#e6f0fa;">International</a>
+          </div>
+        </div>
+        <a href="../../blogs.html">Blogs</a>
+        <a href="../../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero-section animate-fade-in visible" style="background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; min-height:340px; display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; box-shadow:0 2px 32px #b2e0ff33;">
+      <div style="background:rgba(255,255,255,0.82); padding:2.5em 2.5em 2.5em 2.5em; border-radius:22px; max-width:600px; margin:2em;">
+        <h1 style="font-size:2.5rem; font-weight:900; color:#0077c2; margin-bottom:0.5em;">Kerala</h1>
+        <p style="font-size:1.2rem; color:#222; font-weight:500;">Lush backwaters, palm-fringed beaches, hill stations, and vibrant culture. Experience the magic of God’s Own Country.</p>
+      </div>
+    </section>
+    <section class="itineraries-section animate-fade-in visible" style="margin: 2.5rem auto 2.5rem auto; max-width: 1100px;">
+      <h3 style="font-size:2.1rem; font-weight:900; color:#222; margin-bottom:1.2rem; letter-spacing:0.01em;">Kerala Sample Itineraries</h3>
+      <div class="itinerary-cards" style="display:flex; flex-wrap:wrap; gap:2.2rem; justify-content:center;">
+        <div class="itinerary-card" style="background:#fff; border-radius:18px; box-shadow:0 2px 16px #b2e0ff33; max-width:320px; flex:1 1 300px; display:flex; flex-direction:column; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Kerala Backwaters" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.1em 1.2em 1.2em 1.2em;">
+            <h4 style="font-size:1.25rem; font-weight:800; color:#0077c2; margin-bottom:0.5em;">Backwaters & Houseboat</h4>
+            <ul style="padding-left:1.1em; margin-bottom:0.7em; color:#444;">
+              <li>2 nights in Alleppey houseboat</li>
+              <li>Kumarakom village tour</li>
+              <li>Ayurvedic spa experience</li>
+            </ul>
+            <span style="font-weight:700; color:#2196f3;">From ₹18,500/person</span>
+          </div>
+        </div>
+        <div class="itinerary-card" style="background:#fff; border-radius:18px; box-shadow:0 2px 16px #b2e0ff33; max-width:320px; flex:1 1 300px; display:flex; flex-direction:column; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3fd9?auto=format&fit=crop&w=600&q=80" alt="Munnar Tea Gardens" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.1em 1.2em 1.2em 1.2em;">
+            <h4 style="font-size:1.25rem; font-weight:800; color:#0077c2; margin-bottom:0.5em;">Munnar & Thekkady Escape</h4>
+            <ul style="padding-left:1.1em; margin-bottom:0.7em; color:#444;">
+              <li>2 nights in Munnar</li>
+              <li>Tea gardens & Eravikulam Park</li>
+              <li>Wildlife safari in Thekkady</li>
+            </ul>
+            <span style="font-weight:700; color:#2196f3;">From ₹16,000/person</span>
+          </div>
+        </div>
+        <div class="itinerary-card" style="background:#fff; border-radius:18px; box-shadow:0 2px 16px #b2e0ff33; max-width:320px; flex:1 1 300px; display:flex; flex-direction:column; overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80" alt="Kochi Fort" style="width:100%; height:180px; object-fit:cover;">
+          <div style="padding:1.1em 1.2em 1.2em 1.2em;">
+            <h4 style="font-size:1.25rem; font-weight:800; color:#0077c2; margin-bottom:0.5em;">Kochi Heritage Tour</h4>
+            <ul style="padding-left:1.1em; margin-bottom:0.7em; color:#444;">
+              <li>1 night in Fort Kochi</li>
+              <li>Chinese fishing nets & spice market</li>
+              <li>Kathakali dance show</li>
+            </ul>
+            <span style="font-weight:700; color:#2196f3;">From ₹9,500/person</span>
+          </div>
+        </div>
+     
+    </section>
+  </main>
+  <footer style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; background:#fff; border-top:1px solid #e3f2fd;">
+    <div style="text-align:left;">
+      <a href="../../terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600; font-family:'Montserrat',Arial,sans-serif;">Terms &amp; Conditions</a>
+    </div>
+    <div style="text-align:right;">
+      &copy; 2025 Vayavana Travels. All rights reserved.
+    </div>
+  </footer>
+  <script>
+    // Logo lighting animation
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.getElementById('logo-animated');
+      if (logo) {
+        logo.style.position = 'relative';
+        logo.style.overflow = 'hidden';
+        logo.style.transition = 'color 0.18s';
+        logo.addEventListener('mousemove', function(e) {
+          var rect = logo.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var percent = x / rect.width;
+          var color = 'rgb(' + Math.round(75 + 100 * percent) + ',' + Math.round(179 + 50 * percent) + ',' + Math.round(253 - 100 * percent) + ')';
+          logo.style.textShadow = '0 0 18px ' + color + ', 0 0 32px #fff8';
+        });
+        logo.addEventListener('mouseleave', function() {
+          logo.style.textShadow = '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

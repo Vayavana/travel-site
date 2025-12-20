@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vayavana Travels - Your Journey, Our Passion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:sans-serif; background:#f4f6f8; }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    header { background:#fff; padding:1rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.06); position:sticky; top:0; z-index:100; }
+    .main-header .logo-nav { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; width:100%; padding:0 2rem; }
+    .logo {
+      font-size:1.8rem;
+      font-weight:900;
+      text-decoration:none;
+      color:#111;
+      font-family:'Montserrat',Arial,sans-serif;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      background:none !important;
+      box-shadow:none;
+      border-radius:0;
+      padding:0;
+      transition:none;
+      display:block;
+      text-align:left;
+    }
+
+    nav { display:flex; gap:1rem; align-items:center; justify-content:flex-end; }
+    nav a { text-decoration:none; color:#111; font-weight:600; padding:0.4rem 0.8rem; border-radius:6px; transition:0.2s; }
+    nav a:hover, nav a.active { background:#0077c2; color:#fff; }
+
+    .dropdown { position:relative; }
+    .main-header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.7rem 2vw 0.7rem 2vw;
+      width: 100%;
+    }
+    .logo-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .logo {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      background: none !important;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      transition: none;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .main-nav a.active, .main-nav a:hover {
+      background: #0077c2;
+      color: #fff;
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .dropbtn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #111;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .dropbtn:focus, .dropbtn:hover {
+      background: #eee;
+      outline: none;
+    }
+    .dropbtn i, .dropbtn span, .dropbtn .fa-caret-down {
+      color: #111 !important;
+      background: none !important;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .dropbtn i:hover, .dropbtn span:hover, .dropbtn .fa-caret-down:hover,
+    .dropbtn i:focus, .dropbtn span:focus, .dropbtn .fa-caret-down:focus {
+      background: #eee !important;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 180px;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .dropdown-content a:hover { background: #0077c2; color: #fff; }
+    .dropdown:hover .dropdown-content { display: flex; }
+  </style>
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .main-content, .tours-grid, .about-content, .contact-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .tour-card img, .about-img, .contact-img {
+        height: 140px !important;
+      }
+      .tour-card h2, .about-content h2, .contact-content h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .tour-card p, .about-content p, .contact-content p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
+    }
+  </style>
+
+  </head>
+  <body>
+  <header class="main-header">
+    <div class="logo-nav">
+      <a href="index.html" class="logo">VAYAVANA</a>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <i class="fa-solid fa-map-location-dot"></i> Destinations <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="destinations/domestic/index.html">Domestic</a>
+            <a href="destinations/international/index.html">International</a>
+          </div>
+        </div>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="banner-carousel visible">
+    <div class="carousel-slides">
+      <div class="carousel-slide active" style="background-image: url('images/1.jpg');">
+        <div class="carousel-caption">Majestic Mountain Sunrise</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/2.jpg');">
+        <div class="carousel-caption">Tranquil Lake Reflections</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/3.jpg');">
+        <div class="carousel-caption">Lush Forest Pathway</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/4.jpg');">
+        <div class="carousel-caption">Serene Riverside Retreat</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/5.jpg');">
+        <div class="carousel-caption">Rolling Hills and Meadows</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/6.jpg');">
+        <div class="carousel-caption">Dramatic Coastal Cliffs</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/7.jpg');">
+        <div class="carousel-caption">Enchanting Misty Woods</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/8.jpg');">
+        <div class="carousel-caption">Golden Desert Dunes</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/9.jpg');">
+        <div class="carousel-caption">Vibrant Wildflower Valley</div>
+      </div>
+      <div class="carousel-slide" style="background-image: url('images/10.jpg');">
+        <div class="carousel-caption">Snow-Capped Peaks at Dusk</div>
+      </div>
+    </div>
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+  </section>
+
+  <main>
+    <section class="packages-section visible">
+      <h2>Itineraries</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto; color:#444;">Explore our most popular travel packages and ready-made itineraries, each crafted to deliver unique experiences. Whether you seek adventure, relaxation, or cultural immersion, we have the perfect journey for you.</p>
+      <div class="package-list">
+        <div class="package-card">
+          <h3 id="kerala-package">Kerala Delight</h3>
+          <p>6 Days / 5 Nights: Cochin - Munnar - Thekkady - Alleppey - Cochin</p>
+          <ul>
+            <li>Backwater cruise in Alleppey</li>
+            <li>Tea gardens of Munnar</li>
+            <li>Wildlife at Thekkady</li>
+          </ul>
+          <a href="#kerala-itinerary" class="cta">View Itinerary</a>
+        </div>
+        <div class="package-card">
+          <h3 id="bali-package">Bali Bliss</h3>
+          <p>5 Days / 4 Nights: Ubud - Kuta - Seminyak</p>
+          <ul>
+            <li>Ubud rice terraces</li>
+            <li>Beach time in Kuta</li>
+            <li>Water temple tour</li>
+          </ul>
+          <a href="#bali-itinerary" class="cta">View Itinerary</a>
+        </div>
+        <div class="package-card">
+          <h3 id="Singapore">Singapore</h3>
+          <p>5 Days / 4 Nights: Singapore</p>
+          <ul>
+            <li>City Tour</li>
+            <li>MBBS + Flowerdome</li>
+            <li>Sentosa Island</li>
+          </ul>
+          <a href="#bali-itinerary" class="cta">View Itinerary</a>
+        </div>
+        <!-- Add more package-card blocks as needed -->
+      </div>
+      <div class="itinerary-list" style="margin-top:2.5rem;">
+        <div class="itinerary-card">
+          <img src="images/1.jpg" alt="Kerala Explorer" style="width:100%; max-width:340px; height:auto; display:block; border-radius:10px; margin:0 auto 1rem auto;">
+          <h3>Kerala Explorer</h3>
+          <p>6 Days / 5 Nights</p>
+          <ul>
+            <li>Cochin – Munnar – Thekkady – Alleppey</li>
+            <li>Backwater cruise, tea gardens, wildlife safari</li>
+          </ul>
+          <span style="font-weight:600;">From ₹18,999</span>
+          <a href="#" class="cta view-details-btn" data-itinerary="kerala-explorer" style="margin-top:1rem;">View Details</a>
+          <div class="itinerary-details" id="itinerary-kerala-explorer" style="display:none; margin-top:1rem;">
+            <h4>Detailed Itinerary</h4>
+            <ol>
+              <li>Day 1: Arrival at Cochin, transfer to Munnar. Sightseeing en route.</li>
+              <li>Day 2: Explore Munnar – tea gardens, Eravikulam National Park.</li>
+              <li>Day 3: Munnar to Thekkady – wildlife sanctuary, spice plantation visit.</li>
+              <li>Day 4: Thekkady to Alleppey – houseboat cruise, overnight stay.</li>
+              <li>Day 5: Alleppey to Cochin – local sightseeing, shopping.</li>
+              <li>Day 6: Departure from Cochin.</li>
+            </ol>
+            <p style="font-weight:600; color:#111;">Total Price: ₹18,999 per person (includes accommodation, breakfast, transfers, sightseeing)</p>
+          </div>
+        </div>
+        <div class="itinerary-card">
+          <img src="images/2.jpg" alt="Bali Bliss" style="width:100%; max-width:340px; height:auto; display:block; border-radius:10px; margin:0 auto 1rem auto;">
+          <h3>Bali Bliss</h3>
+          <p>5 Days / 4 Nights</p>
+          <ul>
+            <li>Ubud – Kuta – Seminyak</li>
+            <li>Rice terraces, beaches, temples</li>
+          </ul>
+          <span style="font-weight:600;">From ₹29,999</span>
+          <a href="#" class="cta view-details-btn" data-itinerary="bali" style="margin-top:1rem;">View Details</a>
+          <div class="itinerary-details" id="itinerary-bali" style="display:none; margin-top:1rem;">
+            <h4>Detailed Itinerary</h4>
+            <ol>
+              <li>Day 1: Arrival in Bali, transfer to Ubud. Explore rice terraces.</li>
+              <li>Day 2: Ubud sightseeing – Monkey Forest, temples, art market.</li>
+              <li>Day 3: Ubud to Kuta – beach time, water sports.</li>
+              <li>Day 4: Kuta to Seminyak – shopping, sunset at beach club.</li>
+              <li>Day 5: Departure from Bali.</li>
+            </ol>
+            <p style="font-weight:600; color:#111;">Total Price: ₹29,999 per person (includes hotel, breakfast, airport transfers, tours)</p>
+          </div>
+        </div>
+        <!-- Add more itinerary-card blocks as needed -->
+      </div>
+    </section>
+
+    <section class="services-section visible">
+      <h2>Services</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto; color:#444;">Vayavana offers a full suite of travel services to make your journey seamless and memorable. From curated packages and hotel bookings to transportation and flight tickets, we handle every detail so you can focus on the experience.</p>
+      <div class="service-list">
+        <div class="service-card">
+          <span class="service-icon">📦</span>
+          <h3>Packages</h3>
+          <p>Customizable domestic and international packages for every type of traveler.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🏨</span>
+          <h3>Hotels</h3>
+          <p>Handpicked hotels to suit your style and budget, from luxury to boutique stays.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🚗</span>
+          <h3>Transportation</h3>
+          <p>Airport pickups, local cabs, and intercity rides for a smooth travel experience.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🛫</span>
+          <h3>Air Tickets</h3>
+          <p>Book flights at the best prices with real-time support and flexible options.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blogs-section visible">
+      <h2>Blogs</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto; color:#444;">Get inspired for your next adventure! Read our latest travel stories, tips, and destination guides from the Vayavana team and our community of explorers.</p>
+      <div class="blog-slider-container">
+        <button class="blog-slider-btn prev" aria-label="Previous blogs">&#10094;</button>
+        <div class="blog-list" id="blogSliderTrack">
+          <div class="blog-card">
+            <h3>5 Must-See Places in Bali</h3>
+            <ul>
+              <li>Discover the best beaches, temples, and hidden gems in Bali.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>How to Plan a Hassle-Free Family Trip</h3>
+            <ul>
+              <li>Our top tips for stress-free travel with kids, from packing to activities.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>Why You Should Visit Vietnam in 2025</h3>
+            <ul>
+              <li>Experience the culture, food, and landscapes of Vietnam with our expert guide.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>Ultimate Guide to Kerala Backwaters</h3>
+            <ul>
+              <li>Everything you need to know for a magical houseboat experience in Kerala.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>Top 7 Hill Stations in South India</h3>
+            <ul>
+              <li>Explore the coolest escapes: Ooty, Munnar, Kodaikanal, and more.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>How to Travel Sustainably in 2025</h3>
+            <ul>
+              <li>Simple tips for eco-friendly adventures and responsible tourism.</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>Best Street Foods to Try in Thailand</h3>
+            <ul>
+              <li>From Pad Thai to Mango Sticky Rice—don’t miss these local flavors!</li>
+            </ul>
+          </div>
+          <div class="blog-card">
+            <h3>Solo Travel: Why Vietnam is Perfect for First-Timers</h3>
+            <ul>
+              <li>Safe, scenic, and full of surprises—Vietnam is a solo traveler’s dream.</li>
+            </ul>
+          </div>
+        </div>
+        <button class="blog-slider-btn next" aria-label="Next blogs">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="about-section visible">
+      <h2>About Us</h2>
+      <p>At Vayavana Travels, we believe in redefining how the world explores. With a curated portfolio of unforgettable experiences—whether hidden Indian gems or exotic overseas getaways—we’re not just about destinations, but about crafting moments that linger. Our dedicated travel experts bring personalization, comfort, and affordability into every package.</p>
+    </section>
+
+    <section class="connect-section visible">
+      <h2>Connect With Us</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto; color:#444;">Have questions or ready to plan your next trip? Reach out to our team for personalized assistance, travel tips, or to start booking your dream vacation today.</p>
+      <div class="connect-list">
+        <div class="connect-card">
+          <i class="fa fa-phone"></i>
+          <span>Contact: <a href="tel:+919502763187">+91 9502763187</a></span>
+        </div>
+        <div class="connect-card">
+          <i class="fa fa-envelope"></i>
+          <span>Email: <a href="mailto:opsvayavana@gmail.com">opsvayavana@gmail.com</a></span>
+        </div>
+        <div class="connect-card">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp: <a href="https://wa.me/919502763187">Chat on WhatsApp</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="send-email-section visible">
+    </section>
+  </main>
+
+  <footer style="padding:0.5rem 0; text-align:center; font-size:0.97rem; color:#222; background:#fff; border-top:1px solid #e3f2fd; font-family:'Montserrat',Arial,sans-serif; width:100%;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600;">Terms</a> &nbsp;|&nbsp; &copy; 2025 Vayavana Travels
+    </div>
+  </footer>
+  <script>
+// Itinerary details: click to expand/collapse
+function hideAllItineraries() {
+  document.querySelectorAll('.itinerary-details').forEach(function(el) {
+    el.style.display = 'none';
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.view-details-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = btn.getAttribute('data-itinerary');
+      var details = document.getElementById('itinerary-' + id);
+      if (!details) return;
+      var isOpen = details.style.display === 'block';
+      hideAllItineraries();
+      if (!isOpen) details.style.display = 'block';
+    });
+  });
+
+  // Banner carousel sliding logic
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  let currentSlide = 0;
+  let slideInterval;
+
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === idx);
+    });
+    currentSlide = idx;
+  }
+
+  function nextSlide() {
+    showSlide((currentSlide + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    showSlide((currentSlide - 1 + slides.length) % slides.length);
+  }
+
+  if (slides.length > 1) {
+    slideInterval = setInterval(nextSlide, 3500);
+    nextBtn.addEventListener('click', function() {
+      nextSlide();
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 3500);
+    });
+    prevBtn.addEventListener('click', function() {
+      prevSlide();
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 3500);
+    });
+  }
+});
+// No logo animation JS
+  </script>
+
+
+

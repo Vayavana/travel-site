@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tours Disabled - VAYAVANA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @media (max-width: 700px) {
+      header, .main-header {
+        padding: 0.7rem 0.5rem;
+      }
+      .main-header .logo-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0.5rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        width: 100%;
+      }
+      nav a {
+        padding: 0.5rem 0.7rem;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .dropdown-content {
+        min-width: 150px;
+        font-size: 1rem;
+        left: 0;
+        right: auto;
+        padding: 0.5rem 0.7rem;
+      }
+      .tours-hero {
+        padding: 2rem 0.5rem 1rem;
+        border-radius: 0 0 18px 18px;
+      }
+      .tours-hero h1 {
+        font-size: 1.5rem;
+      }
+      .tours-hero p {
+        font-size: 1rem;
+      }
+      .tours-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem 0.5rem !important;
+      }
+      .tour-card img {
+        height: 140px !important;
+      }
+      .tour-card h2 {
+        font-size: 1.05rem !important;
+        margin: 0.7rem !important;
+      }
+      .tour-card p {
+        font-size: 0.97rem !important;
+        margin: 0 0.7rem 0.7rem !important;
+      }
+      footer > div, footer {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+      }
+    }
+  </style>
+  <style>html, body { background: #f2f3f5 !important; }</style>
+  <style>
+    .destinations-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      left: auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+      padding: 1.2rem 2.5rem;
+      z-index: 1000;
+      min-width: 320px;
+      text-align: left;
+      display: flex;
+      gap: 2.5rem;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .destinations-menu.active {
+      display: flex;
+    }
+    .destinations-menu a {
+      display: inline-block;
+      margin: 0 0.7em;
+      color: #222;
+      font-weight: 600;
+      font-size: 1.25rem;
+      text-decoration: none;
+      border-radius: 6px;
+      padding: 0.5em 1.2em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .destinations-menu a:hover {
+      background: #f2f3f5;
+      color: #0077c2;
+    }
+    #destinations-icon:hover + .destinations-menu,
+    .destinations-menu:hover {
+      display: flex;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var destIcon = document.getElementById('destinations-icon');
+      if(destIcon) {
+        var menu = document.createElement('div');
+        menu.className = 'destinations-menu';
+        menu.innerHTML = '<a href="destinations/domestic.html">Domestic</a><a href="destinations/international.html">International</a>';
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+        destIcon.parentNode.insertBefore(menu, destIcon.nextSibling);
+        destIcon.addEventListener('mouseenter', function() {
+          menu.classList.add('active');
+        });
+        destIcon.addEventListener('mouseleave', function() {
+          setTimeout(function() {
+            if (!menu.matches(':hover')) menu.classList.remove('active');
+          }, 120);
+        });
+        menu.addEventListener('mouseleave', function() {
+          menu.classList.remove('active');
+        });
+        menu.addEventListener('mouseenter', function() {
+          menu.classList.add('active');
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo-nav">
+      <a href="index.html" class="logo" id="logo-animated">VAYAVANA</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#" id="destinations-icon" style="font-size:1.3em; padding:0 0.7em; display:flex; align-items:center; gap:0.5em;" title="Destinations">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em;">Destinations</span>
+        </a>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <header class="main-header">
+    <div class="logo-nav">
+      <a href="index.html" class="logo">VAYAVANA</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <i class="fa-solid fa-map-location-dot"></i> Destinations <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="destinations/domestic/index.html">Domestic</a>
+            <a href="destinations/international/index.html">International</a>
+          </div>
+        </div>
+        <a href="blogs.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main style="margin-top:90px; min-height:40vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <h2 style="color:#0077c2; font-size:2.2rem; margin-bottom:1.2rem;">Tours Page Disabled</h2>
+    <p style="font-size:1.2rem; color:#444; max-width:500px; text-align:center;">The Tours page is currently unavailable. Please explore our destinations or blogs for more travel inspiration!</p>
+    <a href="index.html" style="margin-top:2rem; background:#0077c2; color:#fff; padding:0.8em 2em; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.1rem; box-shadow:0 2px 8px rgba(0,119,194,0.10);">Back to Home</a>
+  </main>
+  <footer style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem;">
+    <div style="text-align:left;">
+      <a href="#" style="color:#0077c2; text-decoration:underline; font-weight:500;">Terms &amp; Conditions</a>
+    </div>
+    <div style="text-align:right;">
+      &copy; 2025 Vayavana Travels. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
