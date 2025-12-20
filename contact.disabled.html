@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - Vayavana Travels</title>
+  <title>Contact Us - Vayavana Travels (Disabled)</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
@@ -40,6 +40,11 @@
     .contact-form button:hover { background:#005fa3; }
     @media (max-width: 600px) { .contact-section { padding: 1.2rem 0.5rem; } }
     footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem; font-family:'Montserrat',Arial,sans-serif; background:#fff; border-top:1px solid #e3f2fd; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logo = document.getElementById('logo-animated');
+  <style>
     @media (max-width: 700px) {
       header, .main-header {
         padding: 0.7rem 0.5rem;
@@ -104,9 +109,6 @@
       }
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var logo = document.getElementById('logo-animated');
       if (logo) {
         logo.style.position = 'relative';
         logo.style.overflow = 'hidden';
@@ -144,66 +146,23 @@
           </div>
         </div>
         <a href="blogs.html">Blogs</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="#">Contact</a>
       </nav>
     </div>
   </header>
   <main>
     <section class="contact-section">
-      <h2>Contact Us</h2>
+      <h2>Contact Us (Disabled)</h2>
       <div class="contact-details">
         <div><i class="fa fa-phone"></i> <b>Phone:</b> <a href="tel:+919502763187">+91 9502763187</a></div>
         <div><i class="fa fa-envelope"></i> <b>Email:</b> <a href="mailto:opsvayavana@gmail.com">opsvayavana@gmail.com</a></div>
         <div><i class="fab fa-whatsapp"></i> <b>WhatsApp:</b> <a href="https://wa.me/919502763187">Chat on WhatsApp</a></div>
       </div>
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" autocomplete="off">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send Message</button>
-        <p id="formStatus" style="margin-top:1em;font-weight:600;"></p>
-      </form>
-</main>
-<script>
-  var form = document.getElementById("contactForm");
-  
-  async function handleSubmit(event) {
-    event.preventDefault();
-    var status = document.getElementById("formStatus");
-    var data = new FormData(event.target);
-    fetch(event.target.action, {
-      method: form.method,
-      body: data,
-      headers: {
-          'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        status.innerHTML = "Thanks for your submission!";
-        form.reset()
-      } else {
-        response.json().then(data => {
-          if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-          } else {
-            status.innerHTML = "Oops! There was a problem submitting your form"
-          }
-        })
-      }
-    }).catch(error => {
-      status.innerHTML = "Oops! There was a problem submitting your form"
-    });
-  }
-  form.addEventListener("submit", handleSubmit)
-</script>
+      <div style="font-weight:700;color:#c00;">This contact page has been disabled.</div>
     </section>
   </main>
   <footer>
     <div style="text-align:left;">
-      <p>Contact: 9502763187, e-mail: <a href="mailto:opsvayavana@gmail.com" style="color:#0077c2; text-decoration:underline;">opsvayavana@gmail.com</a></p>
       <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600; font-family:'Montserrat',Arial,sans-serif;">Terms &amp; Conditions</a>
     </div>
     <div style="text-align:right;">

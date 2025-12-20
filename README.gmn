@@ -1,0 +1,13 @@
+I have updated the `contact.html` file to use the formspree.io service instead of a custom backend.
+This will allow the contact form to work on GitHub Pages.
+
+To make the contact form work, you need to:
+1. Create a new form on formspree.io.
+2. Get the form ID from formspree.io.
+3. Replace "your_form_id" in the `contact.html` file with your actual form ID.
+
+I have also cleared the content of `sendMail.js` because it contained sensitive information. This file is no longer needed.
+
+To deploy the changes to GitHub Pages, you need to run the following commands:
+1. `npm install`
+2. `npm run deploy`

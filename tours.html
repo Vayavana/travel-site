@@ -112,6 +112,12 @@
     .destinations-menu:hover {
       display: flex;
     }
+    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -120,12 +126,6 @@
         var menu = document.createElement('div');
         menu.className = 'destinations-menu';
         menu.innerHTML = '<a href="destinations/domestic.html">Domestic</a><a href="destinations/international.html">International</a>';
-    .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box;
-    }
         destIcon.parentNode.insertBefore(menu, destIcon.nextSibling);
         destIcon.addEventListener('mouseenter', function() {
           menu.classList.add('active');
@@ -157,7 +157,7 @@
           <span style="font-size:1.08em; font-weight:600; letter-spacing:0.01em;">Destinations</span>
         </a>
         <a href="blogs.html">Blogs</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">Contact</a>
       </nav>
     </div>
   </header>
@@ -177,7 +177,7 @@
           </div>
         </div>
         <a href="blogs.html">Blogs</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">Contact</a>
       </nav>
     </div>
   </header>
@@ -188,6 +188,7 @@
   </main>
   <footer style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.7rem 2vw 0.7rem 2vw; font-size:1rem;">
     <div style="text-align:left;">
+      <p>Contact: 9502763187, e-mail: <a href="mailto:opsvayavana@gmail.com" style="color:#0077c2; text-decoration:underline;">opsvayavana@gmail.com</a></p>
       <a href="#" style="color:#0077c2; text-decoration:underline; font-weight:500;">Terms &amp; Conditions</a>
     </div>
     <div style="text-align:right;">

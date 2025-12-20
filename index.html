@@ -223,7 +223,6 @@
           </div>
         </div>
         <a href="blogs.html">Blogs</a>
-        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -443,39 +442,11 @@
       <p>At Vayavana Travels, we believe in redefining how the world explores. With a curated portfolio of unforgettable experiences—whether hidden Indian gems or exotic overseas getaways—we’re not just about destinations, but about crafting moments that linger. Our dedicated travel experts bring personalization, comfort, and affordability into every package.</p>
     </section>
 
-    <section class="connect-section visible">
-      <h2>Connect With Us</h2>
-      <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto; color:#444;">Have questions or ready to plan your next trip? Reach out to our team for personalized assistance, travel tips, or to start booking your dream vacation today.</p>
-      <div class="connect-list">
-        <div class="connect-card">
-          <i class="fa fa-phone"></i>
-          <span>Contact: <a href="tel:+919502763187">+91 9502763187</a></span>
-        </div>
-        <div class="connect-card">
-          <i class="fa fa-envelope"></i>
-          <span>Email: <a href="mailto:opsvayavana@gmail.com">opsvayavana@gmail.com</a></span>
-        </div>
-        <div class="connect-card">
-          <i class="fab fa-whatsapp"></i>
-          <span>WhatsApp: <a href="https://wa.me/919502763187">Chat on WhatsApp</a></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="send-email-section visible">
-      <h2>Send Email</h2>
-      <form id="emailForm">
-        <label>Email to:</label><br>
-        <input type="email" id="email" required><br><br>
-        <label>Message:</label><br>
-        <textarea id="message" required></textarea><br><br>
-        <button type="submit">Send Email</button>
-      </form>
-    </section>
   </main>
 
   <footer style="padding:0.5rem 0; text-align:center; font-size:0.97rem; color:#222; background:#fff; border-top:1px solid #e3f2fd; font-family:'Montserrat',Arial,sans-serif; width:100%;">
     <div style="max-width:1200px; margin:0 auto;">
+      <p>Contact: 9502763187, e-mail: <a href="mailto:opsvayavana@gmail.com" style="color:#0077c2; text-decoration:underline;">opsvayavana@gmail.com</a></p>
       <a href="terms.html" style="color:#0077c2; text-decoration:underline; font-weight:600;">Terms</a> &nbsp;|&nbsp; &copy; 2025 Vayavana Travels
     </div>
   </footer>
@@ -806,33 +777,6 @@ body {
         });
       }
     });
-  </script>
-  <script>
-const form = document.getElementById('emailForm');
-
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-
-  fetch('http://localhost:5000/send-email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, message })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      alert('Email sent successfully!');
-    } else {
-      alert('Failed to send email: ' + data.error);
-    }
-  })
-  .catch(error => {
-    alert('Error: ' + error.message);
-  });
-});
   </script>
 </body>
 </html>
