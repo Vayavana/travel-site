@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script defer src="../../script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    html, body { background: #f2f3f5 !important; }
+    html, body { background: #f2f3f5 !important; font-family: 'Roboto', sans-serif; }
     .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid, .dest-list {
       max-width: 1200px;
       margin: 0 auto;
@@ -35,6 +36,15 @@
       .logo {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
+      }
+      .top-contact {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+      }
+      .contact-info span {
+        margin: 0 0.5rem;
+        display: block;
+        margin-bottom: 0.2rem;
       }
       nav {
         flex-direction: column;
@@ -81,7 +91,7 @@
 <body>
   <header class="main-header">
     <div class="logo-nav" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
-      <a href="../../index.html" class="logo" id="logo-animated" style="font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;">VAYAVANA</a>
+      <a href="../../index.html" class="logo" id="logo-animated" style="font-family:'Montserrat',Arial,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:0.18em;text-transform:uppercase;background:#fff !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:#111 !important;background-clip:unset !important;color:#111 !important;box-shadow:0 4px 32px #e3f2fd44,0 1px 8px #fff8;border-radius:18px;padding:0.2em 1.2em;display:inline-block;transition:background 0.3s,color 0.18s,text-shadow 0.18s;margin-right:auto;"><img src="../../logo.jpg" alt="Vayavana" style="height: 4rem; width: auto;"></a>
       <nav class="main-nav" style="display:flex; align-items:center; gap:0.7em; margin-left:auto;">
         <a href="../../index.html">Home</a>
         <a href="../../about.html">About</a>
@@ -97,7 +107,7 @@
           </div>
         </div>
         <a href="../../blogs.html">Blogs</a>
-        <a href="#">Contact</a>
+        <a href="../../contact.html" title="Contact"><i class="fa fa-phone"></i></a>
       </nav>
     </div>
   </header>

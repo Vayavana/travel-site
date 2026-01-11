@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vayavana Blogs</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:sans-serif; background:#f4f6f8; }
+    body { margin:0; font-family:'Roboto', sans-serif; background:#f4f6f8; }
     header { background:#fff; padding:1rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.06); position:sticky; top:0; z-index:100; }
     .main-header .logo-nav { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; width:100%; padding:0 2rem; }
     .logo {
@@ -25,6 +25,10 @@
       transition:none;
       display:block;
       text-align:left;
+    }
+    .logo img {
+      height: 4rem;
+      width: auto;
     }
     nav { display:flex; gap:1rem; align-items:center; justify-content:flex-end; }
     nav a { text-decoration:none; color:#111; font-weight:600; padding:0.4rem 0.8rem; border-radius:6px; transition:0.2s; }
@@ -123,6 +127,18 @@
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
       }
+      .logo img {
+        height: 3rem;
+      }
+      .top-contact {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+      }
+      .contact-info span {
+        margin: 0 0.5rem;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
       nav {
         flex-direction: column;
         align-items: flex-start;
@@ -179,7 +195,7 @@
 <body>
   <header class="main-header">
     <div class="logo-nav">
-      <a href="index.html" class="logo">VAYAVANA</a>
+      <a href="index.html" class="logo"><img src="logo.jpg" alt="Vayavana" style="height: 4rem; width: auto;"></a>
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -193,7 +209,7 @@
           </div>
         </div>
         <a href="blogs.html" class="active">Blogs</a>
-        <a href="#">Contact</a>
+        <a href="contact.html" title="Contact"><i class="fa fa-phone"></i></a>
       </nav>
     </div>
   </header>

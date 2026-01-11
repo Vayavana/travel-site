@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script defer src="script.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:sans-serif; background:#f4f6f8; }
+    body { margin:0; font-family:'Roboto', sans-serif; background:#f4f6f8; }
     .main-content, .tours-grid, .about-content, .contact-content, .itineraries-grid, .blogs-grid {
       max-width: 1200px;
       margin: 0 auto;
@@ -34,6 +34,10 @@
       transition:none;
       display:block;
       text-align:left;
+    }
+    .logo img {
+      height: 4rem;
+      width: auto;
     }
 
     nav { display:flex; gap:1rem; align-items:center; justify-content:flex-end; }
@@ -153,6 +157,18 @@
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
       }
+      .logo img {
+        height: 3rem;
+      }
+      .top-contact {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+      }
+      .contact-info span {
+        margin: 0 0.5rem;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
       nav {
         flex-direction: column;
         align-items: flex-start;
@@ -209,7 +225,7 @@
   <body>
   <header class="main-header">
     <div class="logo-nav">
-      <a href="index.html" class="logo">VAYAVANA</a>
+      <a href="index.html" class="logo"><img src="logo.jpg" alt="Vayavana" style="height: 4rem; width: auto;"></a>
       <nav class="main-nav">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
@@ -223,40 +239,51 @@
           </div>
         </div>
         <a href="blogs.html">Blogs</a>
+        <a href="contact.html" title="Contact"><i class="fa fa-phone"></i></a>
       </nav>
     </div>
   </header>
 
   <section class="banner-carousel visible">
     <div class="carousel-slides">
-      <div class="carousel-slide active" style="background-image: url('images/1.jpg');">
+      <div class="carousel-slide active">
+        <img src="images/1.jpg" alt="Majestic Mountain Sunrise" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Majestic Mountain Sunrise</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/2.jpg');">
+      <div class="carousel-slide">
+        <img src="images/2.jpg" alt="Tranquil Lake Reflections" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Tranquil Lake Reflections</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/3.jpg');">
+      <div class="carousel-slide">
+        <img src="images/3.jpg" alt="Lush Forest Pathway" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Lush Forest Pathway</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/4.jpg');">
+      <div class="carousel-slide">
+        <img src="images/4.jpg" alt="Serene Riverside Retreat" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Serene Riverside Retreat</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/5.jpg');">
+      <div class="carousel-slide">
+        <img src="images/5.jpg" alt="Rolling Hills and Meadows" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Rolling Hills and Meadows</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/6.jpg');">
+      <div class="carousel-slide">
+        <img src="images/6.jpg" alt="Dramatic Coastal Cliffs" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Dramatic Coastal Cliffs</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/7.jpg');">
+      <div class="carousel-slide">
+        <img src="images/7.jpg" alt="Enchanting Misty Woods" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Enchanting Misty Woods</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/8.jpg');">
+      <div class="carousel-slide">
+        <img src="images/8.jpg" alt="Golden Desert Dunes" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Golden Desert Dunes</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/9.jpg');">
+      <div class="carousel-slide">
+        <img src="images/9.jpg" alt="Vibrant Wildflower Valley" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Vibrant Wildflower Valley</div>
       </div>
-      <div class="carousel-slide" style="background-image: url('images/10.jpg');">
+      <div class="carousel-slide">
+        <img src="images/10.jpg" alt="Snow-Capped Peaks at Dusk" style="width:100%; height:100%; object-fit:cover;">
         <div class="carousel-caption">Snow-Capped Peaks at Dusk</div>
       </div>
     </div>
@@ -637,15 +664,9 @@ main > section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
   z-index: 1;
-  /* Add these for best fit */
-  background-size: cover;
-  background-position: center center;
 }
 .carousel-slide.active {
   opacity: 1;

@@ -1,4 +1,7 @@
 /* --- GLOBAL MODERN STYLES & ANIMATIONS --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
 footer {
   padding: 0.5rem 0;
   text-align: center;
@@ -10,7 +13,7 @@ footer {
 }
 }
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: var(--bg);
   color: var(--text);
   animation: fadeIn 1s;
